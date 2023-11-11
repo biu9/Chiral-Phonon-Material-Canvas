@@ -1,24 +1,16 @@
-import logo from './logo.svg';
 import './App.css';
+import BandStructure from "./BandStructure";
+import LatticeStructure from "./LatticeStructure";
+//
+// import data from "./data.txt";
 
 function App() {
+  // load the string from file
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <div>
+      <BandStructure width={500} height={500} bandType={3} data={""}/>
+      </div>
+
   );
 }
 
