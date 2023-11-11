@@ -77,7 +77,14 @@ class BandStructure extends Component {
     }
 
     componentDidMount() {
-        this.updateData();
+        fetch('./data.txt')
+            .then((r) => r.text())
+            .then((text) => {
+                this.setState({
+                    data: text,
+                });
+                this.updateData();
+            });
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
@@ -159,16 +166,6 @@ class BandStructure extends Component {
         });
     }
 
-    // TODO: data should be passed from parent
-    handleClick = () => {
-        fetch('./data.txt')
-            .then((r) => r.text())
-            .then((text) => {
-                this.setState({
-                    data: text,
-                });
-            });
-    };
 
     handleWheel = (e) => {
         e.evt.preventDefault();
@@ -203,7 +200,7 @@ class BandStructure extends Component {
                     x={stageX}
                     y={stageY}
                     onWheel={this.handleWheel}
-                    onClick={this.handleClick}
+                    draggable
                 >
                     <Layer>
                         <BandsRenderer data={processedData} />
